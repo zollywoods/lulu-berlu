@@ -1,6 +1,5 @@
 .logo {
-  width: 800px;
-  height: 800px;
+  width: 70%;
   position: absolute;
   top: 0;
   left: 0;
@@ -60,3 +59,10 @@
 }
 
 
+
+@media (max-width: 768px) {
+  .logo {
+    margin-top: 200px;
+    width: 80%;
+  }
+}
