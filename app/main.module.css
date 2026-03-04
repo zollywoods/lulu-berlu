@@ -1,0 +1,62 @@
+.logo {
+  width: 800px;
+  height: 800px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.container {
+  position: relative;
+  min-height: 100vh;
+  width: 100vw;
+}
+
+.container::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 50px;
+  height: 100vh;
+  background-color: #f3ec39;
+}
+
+.nav {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  gap: 1.5rem;
+  padding: 1.5rem 2rem;
+  align-items: center;
+}
+
+.navLink {
+  color: #000000;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  transition: color 0.2s ease, font-style 0.2s ease, background-color 0.2s ease;
+}
+
+.navLink:hover {
+  color: #555;
+  font-style: italic;
+  background-color: rgba(0, 0, 0, 0.06);
+}
+
+.main {
+  position: relative;
+  display: flex;
+  justify-content: right;
+  height: 100vh;
+  width: 100vw;
+  background-color: #ffffff;
+  padding: 20px;
+  color: #000000;
+}
+
+
