@@ -49,7 +49,7 @@ export default function Home() {
           <div className={styles.upcomingShowContent}>
           <a href="/klein-release.pdf" className={styles.upcomingShowLink}>
             <h2 className={styles.upcomingShowTitle}>Camille Klein</h2>
-            <i className={styles.upcomingShowTitle}> Works on Paper </i>
+            <i className={styles.upcomingShowTitle}> Works on paper </i>
             <p className={styles.upcomingShowDate}> March 14 - May 10 2026 </p>
             <img src="/camille.jpeg" alt="Camille Klein" className={styles.camilleImage} />
           </a>
