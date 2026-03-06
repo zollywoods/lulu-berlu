@@ -6,7 +6,7 @@ import styles from "@/app/main.module.css";
 
 const MOBILE_BREAKPOINT = 768;
 
-export default function Home() {
+export default function InfoPage() {
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -22,7 +22,6 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
-      {/* <span className={styles.branding}>Lulu Berlu</span> */}
       <div className={styles.leftColumn}>
         <Link href="/" className={styles.logoLink}>
           <img
@@ -35,27 +34,26 @@ export default function Home() {
           />
         </Link>
         <nav className={styles.mobileNavUnderLogo}>
-          <a href="/info" className={styles.topRightMenuItem}>info</a>
+          <Link href="/" className={styles.topRightMenuItem}>home</Link>
         </nav>
       </div>
       <main className={styles.rightColumn}>
         <nav className={styles.topRightMenu}>
-          <a href="/info" className={styles.topRightMenuItem}>info</a>
+          <Link href="/" className={styles.topRightMenuItem}>
+            home
+          </Link>
         </nav>
-        <div className={styles.upcomingShow}>
-          <u>Upcoming</u>
-          <br />
-          <br />
-          <div className={styles.upcomingShowContent}>
-          <a href="/klein-release.pdf" className={styles.upcomingShowLink}>
-            <h2 className={styles.upcomingShowTitle}>Camille Klein</h2>
-            <i className={styles.upcomingShowTitle}> Works on Paper </i>
-            <p className={styles.upcomingShowDate}> March 14 - May 10 2026 </p>
-            <img src="/camille.jpeg" alt="Camille Klein" className={styles.camilleImage} />
-          </a>
-          </div>
+        <div className={styles.infoContent}>
+          {/* <u>Information</u> */}
+          {/* <br/>
+          <br/> */}
+          <p>Lulu Berlu is a curatorial project by Maya Blumenberg-Taylor and Alyssa Mattocks, located across two spaces in Ridgewood, NY. 
+            <br/> <br/> Please contact the gallery to schedule an appointment: 
+            <Link href="mailto:info@luluberluprojects.com" className={styles.infoLink}> info@luluberluprojects.com </Link> | <Link href="https://www.instagram.com/lulu._berlu/" target="_blank" className={styles.infoLink}> @lulu._berlu </Link></p>
         </div>
+        <div className={styles.infoBlock}>
 
+        </div>
       </main>
     </div>
   );

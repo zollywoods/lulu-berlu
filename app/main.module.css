@@ -1,14 +1,38 @@
-.logo {
-  width: 70%;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
 .container {
   position: relative;
+  display: flex;
   min-height: 100vh;
-  width: 100vw;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+.leftColumn {
+  flex-shrink: 0;
+  width: 18%;
+}
+
+.logoLink {
+  display: block;
+  text-decoration: none;
+}
+
+.logo {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+.branding {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 1rem 1.5rem;
+  color: #f3ec39;
+  font-size: 1.25rem;
+  font-weight: 600;
+  z-index: 1;
 }
 
 .container::after {
@@ -47,22 +71,207 @@
   background-color: rgba(0, 0, 0, 0.06);
 }
 
-.main {
+.rightColumn {
+  flex: 1;
+  min-width: 0;
   position: relative;
   display: flex;
-  justify-content: right;
-  height: 100vh;
-  width: 100vw;
   background-color: #ffffff;
   padding: 20px;
   color: #000000;
+  padding-top: 100px;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.topRightMenu {
+  position: absolute;
+  top: 20px;
+  right: 70px;
+  display: flex;
+  gap: 1rem;
+}
+
+.topRightMenuItem {
+  color: #000;
+  text-decoration: none;
+  font-size: 1.25rem;
+}
+
+.topRightMenuItem:hover {
+  color: #f3ec39;
+}
+
+.mobileNavUnderLogo {
+  display: none;
+}
+
+.infoContent {
+  padding-top: 0.5rem;
+  width: 40%;
+}
+
+.infoContent h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.upcomingShow {
+  width: 360px;
+
+  width: 500px;
+  padding: 1rem;
+  background-color: #ffffff;
+  background-image: radial-gradient(circle, #000000 1.5px, transparent 1.5px);
+  background-size: 20px 20px;
+  height: 90%;
+  border-radius: 5px;
+}
+
+.infoBlock {
+  width: 360px;
+  margin-left: 100px;
+  width: 400px;
+  padding: 1rem;
+  background-color: #ffffff;
+  background-image: radial-gradient(circle, #000000 1.5px, transparent 1.5px);
+  background-size: 20px 20px;
+  height: 90%;
+  border-radius: 5px;
+}
+
+.upcomingShow u,
+.upcomingShow .upcomingShowTitle,
+.upcomingShow .upcomingShowDate {
+  background-color: #fff;
+  padding: 0.1em 0.2em;
+}
+
+.upcomingShowContent {
+  width: 100%;
+}
+
+.upcomingShowLink {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.upcomingShowTitle {
+  transition: color 0.2s ease;
+  cursor: pointer;
+}
+
+.upcomingShowTitle:hover {
+  color: #f3ec39;
+}
+
+.camilleImage {
+  display: block;
+  max-width: 320px;
+  width: 100%;
+  height: auto;
+  margin-top: 0.5rem;
 }
 
 
 
 @media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .container::after {
+    width: 24px;
+  }
+
+  .leftColumn {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0 0.5rem;
+    flex-shrink: 0;
+  }
+
+  .mobileNavUnderLogo {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.75rem;
+  }
+
+  .topRightMenu {
+    display: none;
+  }
+
+  .logoLink {
+    display: block;
+    max-width: 140px;
+  }
+
   .logo {
-    margin-top: 200px;
+    width: 100%;
+    max-width: 140px;
+  }
+
+  .rightColumn {
+    flex: 1;
+    flex-direction: column;
+    min-height: auto;
+    height: auto;
+    padding: 1rem 1rem 1rem 1.5rem;
+    padding-top: 0.5rem;
+  }
+
+
+  .topRightMenuItem {
+    padding: 0.5rem 0;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .upcomingShow {
     width: 80%;
+    max-width: 100%;
+    box-sizing: border-box;
+    height: fit-content; 
+    min-height: fit-content;
+  }
+
+  .upcomingShowContent {
+    width: 100%;
+  }
+
+  .camilleImage {
+    max-width: 100%;
+  }
+
+  .infoContent {
+    width: 80%;
+    max-width: 80%;
+    margin-left: 0.75rem;
+    margin-right: 2.5rem;
+    padding-top: 0.5rem;
+    box-sizing: border-box;
+  }
+
+  .infoBlock {
+    width: 80%;
+    max-width: 80%;
+    margin-left: 0.75rem;
+    margin-right: 2.5rem;
+    margin-top: 1.5rem;
+    padding: 1rem;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    background-image: radial-gradient(circle, #000000 1.5px, transparent 1.5px);
+    background-size: 20px 20px;
+    min-height: 250px;
+    height: auto;
+    border-radius: 5px;
   }
 }
