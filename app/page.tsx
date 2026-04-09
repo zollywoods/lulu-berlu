@@ -43,7 +43,7 @@ export default function Home() {
           <a href="/info" className={styles.topRightMenuItem}>info</a>
         </nav>
         <div className={styles.upcomingShow}>
-          <u>Upcoming</u>
+          <u>Current</u>
           <br />
           <br />
           <div className={styles.upcomingShowContent}>
