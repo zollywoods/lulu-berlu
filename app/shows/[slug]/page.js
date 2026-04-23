@@ -2,12 +2,16 @@ import { notFound } from "next/navigation";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { showBySlugQuery } from "@/sanity/lib/queries";
+import { sanityConfigured } from "@/sanity/env";
 import ShowPageShell from "../ShowPageShell";
 
 export const revalidate = 60;
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
+  if (!sanityConfigured || !client) {
+    return { title: "Show | Lulu Berlu" };
+  }
   const show = await client.fetch(
     `*[_type == "show" && slug.current == $slug][0]{ title }`,
     { slug },
@@ -20,6 +24,9 @@ export async function generateMetadata({ params }) {
 
 export default async function ShowPage({ params }) {
   const { slug } = await params;
+  if (!sanityConfigured || !client) {
+    notFound();
+  }
   const show = await client.fetch(showBySlugQuery, { slug });
 
   if (!show) {
