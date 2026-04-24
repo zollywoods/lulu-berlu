@@ -48,7 +48,7 @@ export default function InfoPage() {
           {/* <br/>
           <br/> */}
           <p>Lulu Berlu is a curatorial project by Maya Blumenberg-Taylor and Alyssa Mattocks, located across two spaces in Ridgewood, NY. 
-            <br/> <br/> Please contact the gallery to schedule an appointment: 
+            <br/> <br/> Please contact us to schedule an appointment: 
             <Link href="mailto:info@luluberluprojects.com" className={styles.infoLink}> info@luluberluprojects.com </Link> | <Link href="https://www.instagram.com/lulu._berlu/" target="_blank" className={styles.infoLink}> @lulu._berlu </Link></p>
         </div>
         <div className={styles.infoBlock}>
