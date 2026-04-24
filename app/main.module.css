@@ -12,6 +12,14 @@
   width: 18%;
 }
 
+.showStickyLeft {
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  z-index: 3;
+  background-color: #ffffff;
+}
+
 .logoLink {
   display: block;
   text-decoration: none;
@@ -115,6 +123,7 @@
   width: 85%;
   max-width: calc(100% - 140px);
   padding-right: 20px;
+  padding-bottom: 10vh;
   margin-top: 1.5rem;
   display: block;
 }
@@ -160,6 +169,21 @@
   line-height: 1.2;
 }
 
+.showImageButton {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 0 0 16px 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+}
+
+.showImageButton:last-child {
+  margin-bottom: 0;
+}
+
 .showImage {
   width: 92%;
   height: auto;
@@ -167,11 +191,120 @@
   border-radius: 6px;
   margin-left: 0;
   margin-right: 0;
-  margin-bottom: 16px;
+  cursor: pointer;
 }
 
-.showImage:last-child {
-  margin-bottom: 0;
+.showLightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+}
+
+.showLightboxBackdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: rgba(255, 255, 255, 0.92);
+  cursor: pointer;
+}
+
+.showLightboxInner {
+  position: relative;
+  height: 100%;
+  padding: 16px;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+.showLightboxDismissLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.showLightboxTop {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.showLightboxCounter {
+  font-size: 0.95rem;
+}
+
+.showLightboxClose {
+  border: 0;
+  background: transparent;
+  padding: 8px 10px;
+  cursor: pointer;
+  font: inherit;
+  color: #000;
+}
+
+.showLightboxClose:hover {
+  color: #f3ec39;
+}
+
+.showLightboxStage {
+  position: relative;
+  z-index: 1;
+  height: calc(100% - 52px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.showLightboxViewport {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 100%;
+  touch-action: none;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.showLightboxZoomWrap {
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.showLightboxNav {
+  border: 0;
+  background: transparent;
+  padding: 10px 8px;
+  cursor: pointer;
+  font: inherit;
+  color: #000;
+  flex: 0 0 auto;
+}
+
+.showLightboxNav:hover {
+  color: #f3ec39;
+}
+
+.showLightboxImage {
+  max-width: min(92vw, 1200px);
+  max-height: calc(100vh - 120px);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 6px;
 }
 
 .infoContent {
