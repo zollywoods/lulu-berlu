@@ -17,7 +17,9 @@ function distance(a, b) {
 
 export default function ShowPageShell({
   title,
+  showTitle,
   pressReleaseUrl,
+  pressLink,
   date,
   imageUrls = [],
   imageAlts = [],
@@ -278,6 +280,9 @@ export default function ShowPageShell({
 
         <div className={styles.showHeader}>
           <div className={styles.showTitle}>{title}</div>
+          {showTitle ? (
+            <div className={styles.showSubtitle}>{showTitle}</div>
+          ) : null}
           <div className={styles.showMeta}>
             {pressReleaseUrl ? (
               <a
@@ -287,6 +292,16 @@ export default function ShowPageShell({
                 rel="noreferrer"
               >
                 press release
+              </a>
+            ) : null}
+            {pressLink ? (
+              <a
+                href={pressLink}
+                className={styles.showPressReleaseLink}
+                target="_blank"
+                rel="noreferrer"
+              >
+                press
               </a>
             ) : null}
             {date ? <div className={styles.showDate}>{date}</div> : null}

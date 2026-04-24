@@ -145,6 +145,13 @@
   line-height: 1.2;
 }
 
+.showSubtitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.2;
+  font-style: italic;
+}
+
 .showPressReleaseLink {
   color: #000;
   text-decoration: none;
@@ -365,7 +372,11 @@
   cursor: pointer;
 }
 
-.upcomingShowTitle:hover {
+.upcomingShowHeading {
+  display: inline-block;
+}
+
+.upcomingShowHeading:hover .upcomingShowTitle {
   color: #f3ec39;
 }
 

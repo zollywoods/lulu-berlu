@@ -14,6 +14,12 @@ export const showType = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'showTitle',
+      title: 'Show title',
+      type: 'string',
+      description: 'Shown under the title in italics (same size).',
+    }),
+    defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
@@ -45,6 +51,11 @@ export const showType = defineType({
       options: {
         accept: 'application/pdf',
       },
+    }),
+    defineField({
+      name: 'pressLink',
+      title: 'Press link',
+      type: 'url',
     }),
     defineField({
       name: 'date',

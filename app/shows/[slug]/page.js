@@ -42,7 +42,9 @@ export default async function ShowPage({ params }) {
   return (
     <ShowPageShell
       title={show.title}
+      showTitle={show.showTitle}
       pressReleaseUrl={show.pressReleaseUrl}
+      pressLink={show.pressLink}
       date={show.date}
       imageUrls={imageUrls}
       imageAlts={imageAlts}
