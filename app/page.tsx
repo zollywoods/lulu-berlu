@@ -47,7 +47,7 @@ export default function Home() {
           <br />
           <br />
           <div className={styles.upcomingShowContent}>
-          <a href="/klein-release.pdf" className={styles.upcomingShowLink}>
+          <a href="/shows/camille" className={styles.upcomingShowLink}>
             <div className={styles.upcomingShowHeading}>
               <h2 className={styles.upcomingShowTitle}>Camille Klein</h2>
               <i className={styles.upcomingShowTitle}> Works on paper </i>
