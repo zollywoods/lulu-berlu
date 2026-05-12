@@ -54,7 +54,7 @@ export const showType = defineType({
     }),
     defineField({
       name: 'pressLink',
-      title: 'Press link',
+      title: 'Artforum link',
       type: 'url',
     }),
     defineField({

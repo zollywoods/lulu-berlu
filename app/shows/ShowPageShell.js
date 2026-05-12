@@ -284,6 +284,7 @@ export default function ShowPageShell({
             <div className={styles.showSubtitle}>{showTitle}</div>
           ) : null}
           <div className={styles.showMeta}>
+            {date ? <div className={styles.showDate}>{date}</div> : null}
             {pressReleaseUrl ? (
               <a
                 href={pressReleaseUrl}
@@ -291,7 +292,7 @@ export default function ShowPageShell({
                 target="_blank"
                 rel="noreferrer"
               >
-                press release
+                Press Release
               </a>
             ) : null}
             {pressLink ? (
@@ -301,10 +302,17 @@ export default function ShowPageShell({
                 target="_blank"
                 rel="noreferrer"
               >
-                press
+                Artforum
               </a>
             ) : null}
-            {date ? <div className={styles.showDate}>{date}</div> : null}
+            <a
+              href="/mar.pdf"
+              className={styles.showPressReleaseLink}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Manhattan Art Review
+            </a>
           </div>
         </div>
 
