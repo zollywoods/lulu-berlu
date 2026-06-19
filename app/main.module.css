@@ -326,16 +326,96 @@
   margin-bottom: 0.5rem;
 }
 
-.upcomingShow {
-  width: 360px;
+.homeRightColumn {
+  flex-direction: column;
+  height: auto;
+  min-height: 100vh;
+  overflow: visible;
+}
 
+.upcomingShow {
   width: 500px;
-  padding: 1rem;
+  padding: 0.5rem 1rem 3rem 1rem;
   background-color: #ffffff;
   background-image: radial-gradient(circle, #000000 1.5px, transparent 1.5px);
   background-size: 20px 20px;
-  height: 90%;
+  flex: 1 1 auto;
+  min-height: calc(100vh - 140px);
+  height: auto;
   border-radius: 5px;
+  overflow: visible;
+  box-sizing: border-box;
+  margin-bottom: 2rem;
+}
+
+.upcomingShowInner {
+  width: 100%;
+  min-height: 100%;
+  box-sizing: border-box;
+}
+
+.upcomingShowSpacer {
+  display: block;
+  width: 100%;
+  height: 3rem;
+  flex-shrink: 0;
+}
+
+.homeShowLayout {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1 1 auto;
+  width: 100%;
+  padding-bottom: 2.5rem;
+  overflow: visible;
+}
+
+.pastShowsSection {
+  margin-top: 3.5rem;
+  width: 100%;
+  padding-bottom: 1rem;
+}
+
+.pastShowsLabel {
+  display: inline-block;
+  background-color: #fff;
+  padding: 0.1em 0.2em;
+  font-weight: bold;
+}
+
+.pastShowItem {
+  display: block;
+  margin-top: 0.75rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.pastShowRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
+  gap: 1rem;
+  box-sizing: border-box;
+}
+
+.pastShowTitle,
+.pastShowDate {
+  background-color: #fff;
+  padding: 0.1em 0.2em;
+  white-space: nowrap;
+}
+
+.pastShowItem .camilleImage {
+  margin-bottom: 0;
+}
+
+.pastShowItem:hover .pastShowTitle,
+.pastShowItem:hover .pastShowDate {
+  color: #f3ec39;
 }
 
 .infoBlock {
@@ -352,7 +432,10 @@
 
 .upcomingShow u,
 .upcomingShow .upcomingShowTitle,
-.upcomingShow .upcomingShowDate {
+.upcomingShow .upcomingShowDate,
+.upcomingShow .pastShowsLabel,
+.upcomingShow .pastShowTitle,
+.upcomingShow .pastShowDate {
   background-color: #fff;
   padding: 0.1em 0.2em;
 }
@@ -368,6 +451,11 @@
   display: inline-block;
 }
 
+.upcomingShowLink > .upcomingShowTitle {
+  display: inline-block;
+  margin-top: 0.25rem;
+}
+
 .upcomingShowTitle {
   transition: color 0.2s ease;
   cursor: pointer;
@@ -375,11 +463,27 @@
 
 .upcomingShowHeading {
   display: inline-block;
+  line-height: 1.15;
+}
+
+.upcomingShowHeading .upcomingShowTitle,
+.upcomingShowHeading .upcomingShowDate {
+  margin: 0;
+  line-height: 1.15;
 }
 
 .upcomingShowHeading:hover .upcomingShowTitle,
-.upcomingShowHeading:hover .upcomingShowTitle strong {
+.upcomingShowHeading:hover .upcomingShowTitle strong,
+.upcomingShowHeading:hover .upcomingShowDate {
   color: #f3ec39;
+}
+
+.homeLinks {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+  margin-top: 0.75rem;
 }
 
 .camilleImage {
@@ -399,7 +503,7 @@
   }
 
   .container::after {
-    width: 24px;
+    width: 12px;
   }
 
   .leftColumn {
@@ -421,6 +525,20 @@
     display: none;
   }
 
+  .homeRightColumn .topRightMenu {
+    display: flex;
+    position: fixed;
+    top: 0.625rem;
+    right: calc(12px + 0.625rem);
+    z-index: 2;
+  }
+
+  .homeRightColumn .topRightMenuItem {
+    font-size: 1.1rem;
+    padding: 0;
+    min-height: auto;
+  }
+
   .logoLink {
     display: block;
     max-width: 140px;
@@ -440,6 +558,10 @@
     padding-top: 0.5rem;
   }
 
+  .homeRightColumn {
+    padding: 0.5rem 1rem 2.5rem 1rem;
+  }
+
 
   .topRightMenuItem {
     padding: 0.5rem 0;
@@ -449,11 +571,44 @@
   }
 
   .upcomingShow {
-    width: 80%;
+    width: 90%;
     max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1.5rem;
     box-sizing: border-box;
-    height: fit-content; 
-    min-height: fit-content;
+    flex: none;
+    min-height: auto;
+    height: auto;
+    overflow: visible;
+    padding: 0.5rem 1rem 3rem 1rem;
+  }
+
+  .upcomingShowSpacer {
+    height: 2.5rem;
+  }
+
+  .homeShowLayout {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 0.75rem;
+    padding-bottom: 2.5rem;
+    overflow: visible;
+  }
+
+  .pastShowsSection {
+    margin-top: 3.25rem;
+    padding-bottom: 1rem;
+  }
+
+  .pastShowRow {
+    gap: 0.5rem;
+  }
+
+  .pastShowTitle,
+  .pastShowDate {
+    white-space: normal;
   }
 
   .upcomingShowContent {
