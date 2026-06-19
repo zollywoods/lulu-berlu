@@ -71,7 +71,7 @@ export default function HomePageShell({
           />
         </Link>
       </div>
-      <main className={`${styles.rightColumn} ${styles.homeRightColumn}`}>
+      <main className={`${styles.rightColumn} ${styles.homeRightColumn} ${styles.mobileFixedNav}`}>
         <nav className={styles.topRightMenu}>
           <a href="/info" className={styles.topRightMenuItem}>
             info

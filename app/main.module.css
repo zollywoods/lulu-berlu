@@ -525,7 +525,7 @@
     display: none;
   }
 
-  .homeRightColumn .topRightMenu {
+  .mobileFixedNav .topRightMenu {
     display: flex;
     position: fixed;
     top: 0.625rem;
@@ -533,7 +533,7 @@
     z-index: 2;
   }
 
-  .homeRightColumn .topRightMenuItem {
+  .mobileFixedNav .topRightMenuItem {
     font-size: 1.1rem;
     padding: 0;
     min-height: auto;

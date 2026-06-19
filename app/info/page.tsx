@@ -33,11 +33,8 @@ export default function InfoPage() {
             onClick={() => isMobile && setIsClicked((prev) => !prev)}
           />
         </Link>
-        <nav className={styles.mobileNavUnderLogo}>
-          <Link href="/" className={styles.topRightMenuItem}>home</Link>
-        </nav>
       </div>
-      <main className={styles.rightColumn}>
+      <main className={`${styles.rightColumn} ${styles.mobileFixedNav}`}>
         <nav className={styles.topRightMenu}>
           <Link href="/" className={styles.topRightMenuItem}>
             home
