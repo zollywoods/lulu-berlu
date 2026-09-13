@@ -7,12 +7,12 @@ import HomePageShell from "./HomePageShell";
 export const revalidate = 10;
 
 const defaults = {
-  artist: "Molly Zuckerman Hartung",
+  artist: "Molly Zuckerman-Hartung",
   details: null,
   showTitle: "Parallel",
   dates: "September 19 - November 22, 2026",
   imageUrl: "/mollys.jpeg",
-  imageAlt: "Molly Zuckerman Hartung",
+  imageAlt: "Molly Zuckerman-Hartung",
   exhibitionLink: "/molly.pdf",
   links: [],
   pastShows: [
