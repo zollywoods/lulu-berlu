@@ -31,9 +31,8 @@ const client = createClient({
 const homeData = {
   _id: "homePage",
   _type: "homePage",
-  artistFirstName: "Camille",
-  artistLastName: "Klein",
-  showName: "Works on paper",
+  artist: "Camille Klein",
+  showTitle: "Works on Paper",
   dates: "March 14 - May 10, 2026",
   exhibitionLink: "/shows/camille",
 };
@@ -63,7 +62,8 @@ async function main() {
       {
         _key: "camille-klein",
         _type: "pastShow",
-        title: "Camille Klein",
+        artist: "Camille Klein",
+        showTitle: "Works on Paper",
         dates: "March 14 - May 10, 2026",
         link: "/shows/camille",
         image: {

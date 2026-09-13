@@ -1,5 +1,5 @@
 export const showBySlugQuery = `*[_type == "show" && slug.current == $slug][0]{
-  title,
+  "artist": coalesce(artist, title),
   showTitle,
   "slug": slug.current,
   images,
@@ -9,21 +9,23 @@ export const showBySlugQuery = `*[_type == "show" && slug.current == $slug][0]{
 }`
 
 export const homePageQuery = `*[_type == "homePage"][0]{
-  artistFirstName,
-  artistLastName,
+  artist,
+  showTitle,
   details,
-  showName,
   dates,
   image,
+  imagePath,
   exhibitionLink,
   links[]{
     label,
     url
   },
   pastShows[]{
-    title,
+    artist,
+    showTitle,
     dates,
     link,
-    image
+    image,
+    imagePath
   }
 }`

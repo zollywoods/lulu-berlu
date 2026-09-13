@@ -7,6 +7,6 @@ export const client = sanityConfigured
       projectId,
       dataset,
       apiVersion,
-      useCdn: true, // Set to false if statically generating pages, using ISR or tag-based revalidation
+      useCdn: false, // Keep fresh with ISR / on-demand revalidation
     })
   : null

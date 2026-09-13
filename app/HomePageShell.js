@@ -7,10 +7,9 @@ import styles from "@/app/main.module.css";
 const MOBILE_BREAKPOINT = 768;
 
 export default function HomePageShell({
-  artistFirstName,
-  artistLastName,
+  artist,
   details,
-  showName,
+  showTitle,
   dates,
   imageUrl,
   imageAlt,
@@ -37,13 +36,32 @@ export default function HomePageShell({
         <u className={styles.pastShowsLabel}>Past</u>
         {pastShows.map((show) => (
           <a
-            key={`${show.title}-${show.dates}`}
+            key={`${show.artist}-${show.dates}`}
             href={show.link}
             className={styles.pastShowItem}
+            target={show.link?.endsWith(".pdf") ? "_blank" : undefined}
+            rel={show.link?.endsWith(".pdf") ? "noreferrer" : undefined}
           >
-            <div className={styles.pastShowRow}>
-              <span className={styles.pastShowTitle}>{show.title}</span>
-              <span className={styles.pastShowDate}>{show.dates}</span>
+            <div className={styles.pastShowHeading}>
+              <span className={styles.pastShowArtist}>
+                <strong
+                  className={
+                    show.artist === "Park Plays"
+                      ? styles.pastShowArtistItalic
+                      : undefined
+                  }
+                >
+                  {show.artist}
+                </strong>
+              </span>
+              <div className={styles.pastShowRow}>
+                {show.showTitle ? (
+                  <span className={styles.pastShowTitle}>{show.showTitle}</span>
+                ) : (
+                  <span />
+                )}
+                <span className={styles.pastShowDate}>{show.dates}</span>
+              </div>
             </div>
             {show.imageUrl ? (
               <img
@@ -59,7 +77,7 @@ export default function HomePageShell({
 
   return (
     <div className={styles.container}>
-      <div className={styles.leftColumn}>
+      <div className={`${styles.leftColumn} ${styles.showStickyLeft}`}>
         <Link href="/" className={styles.logoLink}>
           <img
             src={showHappy ? "/lulu-happy.svg" : "/lulu-sad.svg"}
@@ -80,30 +98,38 @@ export default function HomePageShell({
         <div className={styles.homeShowLayout}>
           <div className={styles.upcomingShow}>
             <div className={styles.upcomingShowInner}>
-              <br />
               <div className={styles.upcomingShowContent}>
-                <a href={exhibitionLink} className={styles.upcomingShowLink}>
+                <u className={styles.pastShowsLabel}>Upcoming</u>
+                <a
+                  href={exhibitionLink}
+                  className={styles.upcomingShowLink}
+                  target={exhibitionLink?.endsWith(".pdf") ? "_blank" : undefined}
+                  rel={
+                    exhibitionLink?.endsWith(".pdf") ? "noreferrer" : undefined
+                  }
+                >
                   <div className={styles.upcomingShowHeading}>
-                    <h2 className={styles.upcomingShowTitle}>
-                      <strong>{artistFirstName}</strong>{" "}
-                      <strong>{artistLastName}</strong>
-                    </h2>
-                    {details ? (
-                      <p className={styles.upcomingShowTitle}>
-                        <strong>{details}</strong>
-                      </p>
-                    ) : null}
-                    <p className={styles.upcomingShowDate}>{dates}</p>
+                    <p className={styles.upcomingShowTitle}>
+                      <strong>{artist}</strong>
+                    </p>
+                    <div className={styles.upcomingShowMetaRow}>
+                      <div className={styles.upcomingShowMetaLeft}>
+                        {showTitle ? (
+                          <p className={styles.upcomingShowName}>{showTitle}</p>
+                        ) : null}
+                        {details ? (
+                          <p className={styles.upcomingShowTitle}>
+                            <strong>{details}</strong>
+                          </p>
+                        ) : null}
+                      </div>
+                      <p className={styles.upcomingShowDate}>{dates}</p>
+                    </div>
                   </div>
-                  {showName ? (
-                    <i className={styles.upcomingShowTitle}>
-                      <strong>{showName}</strong>
-                    </i>
-                  ) : null}
                   {imageUrl ? (
                     <img
                       src={imageUrl}
-                      alt={imageAlt ?? `${artistFirstName} ${artistLastName}`}
+                      alt={imageAlt ?? artist}
                       className={styles.camilleImage}
                     />
                   ) : null}

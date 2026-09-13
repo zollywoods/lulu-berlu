@@ -22,7 +22,7 @@ export default function InfoPage() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.leftColumn}>
+      <div className={`${styles.leftColumn} ${styles.showStickyLeft}`}>
         <Link href="/" className={styles.logoLink}>
           <img
             src={showHappy ? "/lulu-happy.svg" : "/lulu-sad.svg"}

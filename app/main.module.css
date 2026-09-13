@@ -13,11 +13,20 @@
 }
 
 .showStickyLeft {
-  position: sticky;
-  top: 0;
+  flex-shrink: 0;
+  width: 18%;
   align-self: flex-start;
+  /* Keeps layout space; logo itself is fixed below */
+}
+
+.showStickyLeft .logoLink {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 18%;
   z-index: 3;
   background-color: #ffffff;
+  box-sizing: border-box;
 }
 
 .logoLink {
@@ -93,11 +102,12 @@
 }
 
 .topRightMenu {
-  position: absolute;
+  position: fixed;
   top: 20px;
   right: 70px;
   display: flex;
   gap: 1rem;
+  z-index: 4;
 }
 
 .topRightMenuItem {
@@ -334,7 +344,7 @@
 }
 
 .upcomingShow {
-  width: 500px;
+  width: 580px;
   padding: 0.5rem 1rem 3rem 1rem;
   background-color: #ffffff;
   background-image: radial-gradient(circle, #000000 1.5px, transparent 1.5px);
@@ -372,7 +382,7 @@
 }
 
 .pastShowsSection {
-  margin-top: 3.5rem;
+  margin-top: 4.5rem;
   width: 100%;
   padding-bottom: 1rem;
 }
@@ -387,8 +397,25 @@
 .pastShowItem {
   display: block;
   margin-top: 0.75rem;
+  margin-bottom: 1.75rem;
   text-decoration: none;
   color: inherit;
+}
+
+.pastShowHeading {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.pastShowArtist {
+  display: inline-block;
+  background-color: #fff;
+  padding: 0.1em 0.2em;
+  line-height: 1.15;
+}
+
+.pastShowArtistItalic {
+  font-style: italic;
 }
 
 .pastShowRow {
@@ -396,6 +423,7 @@
   justify-content: space-between;
   align-items: baseline;
   width: 100%;
+  max-width: 100%;
   text-decoration: none;
   color: inherit;
   gap: 1rem;
@@ -407,12 +435,24 @@
   background-color: #fff;
   padding: 0.1em 0.2em;
   white-space: nowrap;
+  line-height: 1.15;
+}
+
+.pastShowTitle {
+  font-style: italic;
+}
+
+.pastShowDate {
+  margin-left: auto;
+  flex: 0 0 auto;
+  text-align: right;
 }
 
 .pastShowItem .camilleImage {
   margin-bottom: 0;
 }
 
+.pastShowItem:hover .pastShowArtist,
 .pastShowItem:hover .pastShowTitle,
 .pastShowItem:hover .pastShowDate {
   color: #f3ec39;
@@ -432,8 +472,10 @@
 
 .upcomingShow u,
 .upcomingShow .upcomingShowTitle,
+.upcomingShow .upcomingShowName,
 .upcomingShow .upcomingShowDate,
 .upcomingShow .pastShowsLabel,
+.upcomingShow .pastShowArtist,
 .upcomingShow .pastShowTitle,
 .upcomingShow .pastShowDate {
   background-color: #fff;
@@ -448,7 +490,9 @@
   color: inherit;
   text-decoration: none;
   cursor: pointer;
-  display: inline-block;
+  display: block;
+  width: 100%;
+  margin-top: 0.75rem;
 }
 
 .upcomingShowLink > .upcomingShowTitle {
@@ -457,24 +501,72 @@
 }
 
 .upcomingShowTitle {
-  transition: color 0.2s ease;
+  display: inline-block;
+  width: fit-content;
+  max-width: 100%;
+  cursor: pointer;
+}
+
+.upcomingShowName {
+  display: inline-block;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0;
+  line-height: 1.15;
+  font-style: italic;
+  font-weight: inherit;
+  font-size: inherit;
   cursor: pointer;
 }
 
 .upcomingShowHeading {
-  display: inline-block;
+  display: block;
+  width: 100%;
+  text-align: left;
   line-height: 1.15;
 }
 
+.upcomingShowMetaRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 100%;
+  gap: 1rem;
+  box-sizing: border-box;
+}
+
+.upcomingShowMetaLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.upcomingShowMetaLeft .upcomingShowTitle,
+.upcomingShowMetaLeft .upcomingShowName {
+  margin: 0;
+}
+
 .upcomingShowHeading .upcomingShowTitle,
+.upcomingShowHeading .upcomingShowName,
 .upcomingShowHeading .upcomingShowDate {
   margin: 0;
   line-height: 1.15;
 }
 
-.upcomingShowHeading:hover .upcomingShowTitle,
-.upcomingShowHeading:hover .upcomingShowTitle strong,
-.upcomingShowHeading:hover .upcomingShowDate {
+.upcomingShowHeading .upcomingShowDate {
+  display: inline-block;
+  width: fit-content;
+  margin-left: auto;
+  flex: 0 0 auto;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.upcomingShowLink:hover .upcomingShowTitle,
+.upcomingShowLink:hover .upcomingShowTitle strong,
+.upcomingShowLink:hover .upcomingShowName,
+.upcomingShowLink:hover .upcomingShowDate {
   color: #f3ec39;
 }
 
@@ -513,6 +605,25 @@
     align-items: center;
     padding: 1rem 0 0.5rem;
     flex-shrink: 0;
+  }
+
+  .showStickyLeft .logoLink {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 12px;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem 0;
+    background-color: #ffffff;
+    z-index: 3;
+  }
+
+  .showStickyLeft {
+    width: 100%;
+    min-height: 72px;
+    padding-top: 0.5rem;
   }
 
   .mobileNavUnderLogo {
@@ -598,7 +709,7 @@
   }
 
   .pastShowsSection {
-    margin-top: 3.25rem;
+    margin-top: 4.25rem;
     padding-bottom: 1rem;
   }
 

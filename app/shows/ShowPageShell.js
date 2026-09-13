@@ -16,7 +16,7 @@ function distance(a, b) {
 }
 
 export default function ShowPageShell({
-  title,
+  artist,
   showTitle,
   pressReleaseUrl,
   pressLink,
@@ -279,7 +279,7 @@ export default function ShowPageShell({
         </nav>
 
         <div className={styles.showHeader}>
-          <div className={styles.showTitle}>{title}</div>
+          <div className={styles.showTitle}>{artist}</div>
           {showTitle ? (
             <div className={styles.showSubtitle}>{showTitle}</div>
           ) : null}

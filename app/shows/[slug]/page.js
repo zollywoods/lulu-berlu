@@ -13,13 +13,15 @@ export async function generateMetadata({ params }) {
     return { title: "Show | Lulu Berlu" };
   }
   const show = await client.fetch(
-    `*[_type == "show" && slug.current == $slug][0]{ title }`,
+    `*[_type == "show" && slug.current == $slug][0]{
+      "artist": coalesce(artist, title)
+    }`,
     { slug },
   );
-  if (!show?.title) {
+  if (!show?.artist) {
     return { title: "Show | Lulu Berlu" };
   }
-  return { title: `${show.title} | Lulu Berlu` };
+  return { title: `${show.artist} | Lulu Berlu` };
 }
 
 export default async function ShowPage({ params }) {
@@ -41,7 +43,7 @@ export default async function ShowPage({ params }) {
 
   return (
     <ShowPageShell
-      title={show.title}
+      artist={show.artist}
       showTitle={show.showTitle}
       pressReleaseUrl={show.pressReleaseUrl}
       pressLink={show.pressLink}

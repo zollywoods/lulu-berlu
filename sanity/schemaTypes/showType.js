@@ -8,22 +8,23 @@ export const showType = defineType({
   icon: ImagesIcon,
   fields: [
     defineField({
-      name: 'title',
-      title: 'Title',
+      name: 'artist',
+      title: 'Artist',
       type: 'string',
+      description: 'Shown on the first line (e.g. Camille Klein).',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'showTitle',
       title: 'Show title',
       type: 'string',
-      description: 'Shown under the title in italics (same size).',
+      description: 'Shown under the artist (e.g. Works on Paper).',
     }),
     defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
-      options: {source: 'title', maxLength: 96},
+      options: {source: 'artist', maxLength: 96},
       validation: (Rule) => Rule.required(),
     }),
     defineField({
@@ -65,6 +66,6 @@ export const showType = defineType({
     }),
   ],
   preview: {
-    select: {title: 'title', media: 'images.0'},
+    select: {title: 'artist', subtitle: 'showTitle', media: 'images.0'},
   },
 })

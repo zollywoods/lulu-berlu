@@ -4,21 +4,29 @@ import { homePageQuery } from "@/sanity/lib/queries";
 import { sanityConfigured } from "@/sanity/env";
 import HomePageShell from "./HomePageShell";
 
-export const revalidate = 60;
+export const revalidate = 10;
 
 const defaults = {
-  artistFirstName: "Camille",
-  artistLastName: "Klein",
+  artist: "Molly Zuckerman Hartung",
   details: null,
-  showName: "Works on paper",
-  dates: "March 14 - May 10, 2026",
-  imageUrl: "/camille.jpeg",
-  imageAlt: "Camille Klein",
-  exhibitionLink: "/shows/camille",
+  showTitle: "Parallel",
+  dates: "September 19 - November 22, 2026",
+  imageUrl: "/mollys.jpeg",
+  imageAlt: "Molly Zuckerman Hartung",
+  exhibitionLink: "/molly.pdf",
   links: [],
   pastShows: [
     {
-      title: "Camille Klein",
+      artist: "Park Plays",
+      showTitle: "co-presented with Fabrizio…",
+      dates: "June 21 & June 28, 2026",
+      link: "/parkplays.pdf",
+      imageUrl: "/hannahsplay.jpeg",
+      imageAlt: "Park Plays",
+    },
+    {
+      artist: "Camille Klein",
+      showTitle: "Works on Paper",
       dates: "March 14 - May 10, 2026",
       link: "/shows/camille",
       imageUrl: "/camille.jpeg",
@@ -34,36 +42,34 @@ export default async function Home() {
     home = await client.fetch(homePageQuery);
   }
 
-  const artistFirstName = home?.artistFirstName ?? defaults.artistFirstName;
-  const artistLastName = home?.artistLastName ?? defaults.artistLastName;
+  const artist = home?.artist ?? defaults.artist;
   const details = home?.details ?? defaults.details;
-  const showName = home?.showName ?? (home ? null : defaults.showName);
+  const showTitle = home?.showTitle ?? (home ? null : defaults.showTitle);
   const dates = home?.dates ?? defaults.dates;
   const exhibitionLink = home?.exhibitionLink ?? defaults.exhibitionLink;
   const links = home?.links ?? defaults.links;
   const pastShows = (home?.pastShows ?? defaults.pastShows).map((show) => ({
-    title: show.title,
+    artist: show.artist,
+    showTitle: show.showTitle ?? null,
     dates: show.dates,
     link: show.link,
     imageUrl: show.image
       ? urlFor(show.image).width(600).auto("format").url()
-      : show.imageUrl ?? null,
-    imageAlt: show.image?.alt ?? show.imageAlt ?? show.title,
+      : show.imagePath ?? show.imageUrl ?? null,
+    imageAlt: show.image?.alt ?? show.imageAlt ?? show.artist,
   }));
 
   const imageUrl = home?.image
     ? urlFor(home.image).width(800).auto("format").url()
-    : home
-      ? null
-      : defaults.imageUrl;
-  const imageAlt = home?.image?.alt ?? (home ? null : defaults.imageAlt);
+    : home?.imagePath ?? (home ? null : defaults.imageUrl);
+  const imageAlt =
+    home?.image?.alt ?? home?.artist ?? (home ? null : defaults.imageAlt);
 
   return (
     <HomePageShell
-      artistFirstName={artistFirstName}
-      artistLastName={artistLastName}
+      artist={artist}
       details={details}
-      showName={showName}
+      showTitle={showTitle}
       dates={dates}
       imageUrl={imageUrl}
       imageAlt={imageAlt}

@@ -8,24 +8,25 @@ export const homePageType = defineType({
   icon: HomeIcon,
   fields: [
     defineField({
-      name: 'artistFirstName',
-      title: 'Artist first name',
+      name: 'artist',
+      title: 'Artist',
       type: 'string',
-      initialValue: 'Camille',
+      description: 'Shown bold on the first line (e.g. Camille Klein).',
+      initialValue: 'Camille Klein',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'artistLastName',
-      title: 'Artist last name',
+      name: 'showTitle',
+      title: 'Show title',
       type: 'string',
-      initialValue: 'Klein',
-      validation: (Rule) => Rule.required(),
+      description: 'Shown on the line under the artist (e.g. Works on Paper).',
+      initialValue: 'Works on Paper',
     }),
     defineField({
       name: 'details',
       title: 'Details',
       type: 'string',
-      description: 'Optional line under the artist name, same styling as the artist name.',
+      description: 'Optional line under the show title, same styling as the artist.',
     }),
     defineField({
       name: 'dates',
@@ -34,13 +35,6 @@ export const homePageType = defineType({
       description: 'Example: March 14 - May 10, 2026',
       initialValue: 'March 14 - May 10, 2026',
       validation: (Rule) => Rule.required(),
-    }),
-    defineField({
-      name: 'showName',
-      title: 'Show name',
-      type: 'string',
-      description: 'Optional. Shown in italics below the dates (e.g. Works on paper).',
-      initialValue: 'Works on paper',
     }),
     defineField({
       name: 'image',
@@ -54,6 +48,13 @@ export const homePageType = defineType({
           title: 'Alternative text',
         }),
       ],
+    }),
+    defineField({
+      name: 'imagePath',
+      title: 'Public image path',
+      type: 'string',
+      description:
+        'Optional. Path in /public instead of an uploaded image (e.g. /mollys.jpeg).',
     }),
     defineField({
       name: 'exhibitionLink',
@@ -102,10 +103,17 @@ export const homePageType = defineType({
           name: 'pastShow',
           fields: [
             defineField({
-              name: 'title',
-              title: 'Title',
+              name: 'artist',
+              title: 'Artist',
               type: 'string',
+              description: 'Shown bold on the first line.',
               validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'showTitle',
+              title: 'Show title',
+              type: 'string',
+              description: 'Optional line under the artist (e.g. Works on Paper).',
             }),
             defineField({
               name: 'dates',
@@ -133,9 +141,16 @@ export const homePageType = defineType({
                 }),
               ],
             }),
+            defineField({
+              name: 'imagePath',
+              title: 'Public image path',
+              type: 'string',
+              description:
+                'Optional. Path in /public instead of an uploaded image (e.g. /hannahsplay.jpeg).',
+            }),
           ],
           preview: {
-            select: {title: 'title', subtitle: 'dates'},
+            select: {title: 'artist', subtitle: 'showTitle'},
           },
         }),
       ],
