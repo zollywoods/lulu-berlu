@@ -693,6 +693,7 @@
     height: auto;
     overflow: visible;
     padding: 0.5rem 1rem 3rem 1rem;
+    font-size: 0.92rem;
   }
 
   .upcomingShowSpacer {
@@ -714,12 +715,29 @@
   }
 
   .pastShowRow {
-    gap: 0.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
   }
 
   .pastShowTitle,
   .pastShowDate {
     white-space: normal;
+  }
+
+  .pastShowDate {
+    margin-left: 0;
+  }
+
+  .upcomingShowMetaRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+
+  .upcomingShowHeading .upcomingShowDate {
+    margin-left: 0;
+    text-align: left;
   }
 
   .upcomingShowContent {
