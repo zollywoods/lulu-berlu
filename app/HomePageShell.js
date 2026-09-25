@@ -99,7 +99,7 @@ export default function HomePageShell({
           <div className={styles.upcomingShow}>
             <div className={styles.upcomingShowInner}>
               <div className={styles.upcomingShowContent}>
-                <u className={styles.pastShowsLabel}>Upcoming</u>
+                <u className={styles.pastShowsLabel}>Current</u>
                 <a
                   href={exhibitionLink}
                   className={styles.upcomingShowLink}
