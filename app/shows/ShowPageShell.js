@@ -15,6 +15,18 @@ function distance(a, b) {
   return Math.hypot(dx, dy);
 }
 
+function captionWithItalicTitle(caption) {
+  const match = caption.match(/^(.*),\s*(\d{4}(?:[–-]\d{4})?)([\s\S]*)$/);
+  if (!match) return caption;
+  const [, title, year, rest] = match;
+  return (
+    <>
+      <em>{title}</em>
+      {`, ${year}${rest}`}
+    </>
+  );
+}
+
 export default function ShowPageShell({
   artist,
   showTitle,
@@ -23,6 +35,8 @@ export default function ShowPageShell({
   date,
   imageUrls = [],
   imageAlts = [],
+  imageCaptions = [],
+  reviewLink = "/mar.pdf",
 }) {
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
@@ -305,33 +319,41 @@ export default function ShowPageShell({
                 Artforum
               </a>
             ) : null}
-            <a
-              href="/mar.pdf"
-              className={styles.showPressReleaseLink}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Manhattan Art Review
-            </a>
+            {reviewLink ? (
+              <a
+                href={reviewLink}
+                className={styles.showPressReleaseLink}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Manhattan Art Review
+              </a>
+            ) : null}
           </div>
         </div>
 
         <div className={styles.showGallery}>
           {imageUrls.map((src, i) => (
-            <button
-              key={src}
-              type="button"
-              className={styles.showImageButton}
-              onClick={() => setLightboxIndex(i)}
-              aria-label={`Open image ${i + 1} of ${imageUrls.length}`}
-            >
-              <img
-                src={src}
-                alt={imageAlts[i] || ""}
-                className={styles.showImage}
-                loading="lazy"
-              />
-            </button>
+            <figure key={src} className={styles.showFigure}>
+              <button
+                type="button"
+                className={styles.showImageButton}
+                onClick={() => setLightboxIndex(i)}
+                aria-label={`Open image ${i + 1} of ${imageUrls.length}`}
+              >
+                <img
+                  src={src}
+                  alt={imageAlts[i] || ""}
+                  className={styles.showImage}
+                  loading="lazy"
+                />
+              </button>
+              {imageCaptions[i] ? (
+                <figcaption className={styles.showCaption}>
+                  {captionWithItalicTitle(imageCaptions[i])}
+                </figcaption>
+              ) : null}
+            </figure>
           ))}
         </div>
       </main>

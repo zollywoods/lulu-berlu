@@ -104,7 +104,8 @@
 .topRightMenu {
   position: fixed;
   top: 20px;
-  right: 70px;
+  right: 50px;
+  transform: translateX(50%);
   display: flex;
   gap: 1rem;
   z-index: 4;
@@ -114,6 +115,7 @@
   color: #000;
   text-decoration: none;
   font-size: 1.25rem;
+  letter-spacing: 0.06em;
 }
 
 .topRightMenuItem:hover {
@@ -187,19 +189,31 @@
   margin-bottom: 0.5rem;
 }
 
+.showFigure {
+  margin: 0 0 1.75rem 0;
+}
+
+.showFigure:last-child {
+  margin-bottom: 0;
+}
+
 .showImageButton {
   display: block;
   width: 100%;
   padding: 0;
-  margin: 0 0 16px 0;
+  margin: 0;
   border: 0;
   background: transparent;
   cursor: pointer;
   text-align: left;
 }
 
-.showImageButton:last-child {
-  margin-bottom: 0;
+.showCaption {
+  width: 92%;
+  margin: 0.4rem 0 0;
+  font-size: 0.85rem;
+  line-height: 1.35;
+  white-space: pre-line;
 }
 
 .showImage {
@@ -641,6 +655,7 @@
     position: fixed;
     top: 0.625rem;
     right: calc(12px + 0.625rem);
+    transform: none;
     z-index: 2;
   }
 
@@ -648,6 +663,7 @@
     font-size: 1.1rem;
     padding: 0;
     min-height: auto;
+    letter-spacing: normal;
   }
 
   .logoLink {
@@ -679,6 +695,7 @@
     min-height: 44px;
     display: inline-flex;
     align-items: center;
+    letter-spacing: normal;
   }
 
   .upcomingShow {

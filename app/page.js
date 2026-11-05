@@ -13,7 +13,7 @@ const defaults = {
   dates: "September 19 - November 22, 2026",
   imageUrl: "/mollys.jpeg",
   imageAlt: "Molly Zuckerman-Hartung",
-  exhibitionLink: "/molly.pdf",
+  exhibitionLink: "/shows/molly",
   links: [],
   pastShows: [
     {
@@ -46,7 +46,10 @@ export default async function Home() {
   const details = home?.details ?? defaults.details;
   const showTitle = home?.showTitle ?? (home ? null : defaults.showTitle);
   const dates = home?.dates ?? defaults.dates;
-  const exhibitionLink = home?.exhibitionLink ?? defaults.exhibitionLink;
+  const exhibitionLink =
+    home?.exhibitionLink === "/molly.pdf"
+      ? "/shows/molly"
+      : (home?.exhibitionLink ?? defaults.exhibitionLink);
   const links = home?.links ?? defaults.links;
   const pastShows = (home?.pastShows ?? defaults.pastShows).map((show) => ({
     artist: show.artist,
