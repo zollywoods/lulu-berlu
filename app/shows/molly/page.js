@@ -65,7 +65,8 @@ export default function MollyShowPage() {
       showTitle={SHOW_TITLE}
       date={DATE}
       pressReleaseUrl="/molly.pdf"
-      reviewLink={null}
+      reviewLink="https://brooklynrail.org/2026/10/artseen/molly-zuckerman-hartung-parallel/"
+      reviewLabel="Brooklyn Rail"
       imageUrls={files.map((file) => `/molly/${encodeURIComponent(file)}`)}
       imageAlts={files.map((file) =>
         file.replace(/\.[^.]+$/, "").replace(/^MZH_\d+_/, ""),

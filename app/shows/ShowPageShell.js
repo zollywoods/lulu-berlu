@@ -37,6 +37,7 @@ export default function ShowPageShell({
   imageAlts = [],
   imageCaptions = [],
   reviewLink = "/mar.pdf",
+  reviewLabel = "Manhattan Art Review",
 }) {
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
@@ -326,7 +327,7 @@ export default function ShowPageShell({
                 target="_blank"
                 rel="noreferrer"
               >
-                Manhattan Art Review
+                {reviewLabel}
               </a>
             ) : null}
           </div>
