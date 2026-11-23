@@ -46,8 +46,8 @@ export default function HomePageShell({
                 <strong>{details}</strong>
               </p>
             ) : null}
+            <p className={styles.upcomingShowDate}>{dates}</p>
           </div>
-          <p className={styles.upcomingShowDate}>{dates}</p>
         </div>
       </div>
       {imageUrl ? (

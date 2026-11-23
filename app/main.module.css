@@ -435,13 +435,13 @@
 
 .pastShowRow {
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
+  flex-direction: column;
+  align-items: flex-start;
   width: 100%;
   max-width: 100%;
   text-decoration: none;
   color: inherit;
-  gap: 1rem;
+  gap: 0;
   box-sizing: border-box;
 }
 
@@ -458,9 +458,8 @@
 }
 
 .pastShowDate {
-  margin-left: auto;
-  flex: 0 0 auto;
-  text-align: right;
+  margin-left: 0;
+  text-align: left;
 }
 
 .pastShowItem .camilleImage {
@@ -546,10 +545,10 @@ a.upcomingShowLink {
 
 .upcomingShowMetaRow {
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
+  flex-direction: column;
+  align-items: flex-start;
   width: 100%;
-  gap: 1rem;
+  gap: 0;
   box-sizing: border-box;
 }
 
@@ -575,9 +574,8 @@ a.upcomingShowLink {
 .upcomingShowHeading .upcomingShowDate {
   display: inline-block;
   width: fit-content;
-  margin-left: auto;
-  flex: 0 0 auto;
-  text-align: right;
+  margin-left: 0;
+  text-align: left;
   white-space: nowrap;
 }
 
