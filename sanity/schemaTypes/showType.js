@@ -41,6 +41,21 @@ export const showType = defineType({
               type: 'string',
               title: 'Alternative text',
             }),
+            defineField({
+              name: 'caption',
+              title: 'Caption',
+              type: 'text',
+              rows: 4,
+              description:
+                'Shown under this image. The artwork title, before the comma and year, is italicized on the site.',
+            }),
+            defineField({
+              name: 'imagePath',
+              title: 'Public image path',
+              type: 'string',
+              description:
+                'Optional path in /public when this image is not uploaded (e.g. /molly/MZH_1_L Bracket.jpg).',
+            }),
           ],
         }),
       ],
@@ -54,9 +69,39 @@ export const showType = defineType({
       },
     }),
     defineField({
-      name: 'pressLink',
-      title: 'Artforum link',
-      type: 'url',
+      name: 'pressReleasePath',
+      title: 'Press release path',
+      type: 'string',
+      description: 'Optional path in /public if the PDF is not uploaded (e.g. /molly.pdf).',
+    }),
+    defineField({
+      name: 'pressLinks',
+      title: 'Press links',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          type: 'object',
+          name: 'showPressLink',
+          fields: [
+            defineField({
+              name: 'label',
+              title: 'Label',
+              type: 'string',
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'url',
+              title: 'URL',
+              type: 'string',
+              description: 'Path or full URL (e.g. /mar.pdf or https://...).',
+              validation: (Rule) => Rule.required(),
+            }),
+          ],
+          preview: {
+            select: {title: 'label', subtitle: 'url'},
+          },
+        }),
+      ],
     }),
     defineField({
       name: 'date',

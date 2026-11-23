@@ -31,13 +31,11 @@ export default function ShowPageShell({
   artist,
   showTitle,
   pressReleaseUrl,
-  pressLink,
+  pressLinks = [],
   date,
   imageUrls = [],
   imageAlts = [],
   imageCaptions = [],
-  reviewLink = "/mar.pdf",
-  reviewLabel = "Manhattan Art Review",
 }) {
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
@@ -310,26 +308,25 @@ export default function ShowPageShell({
                 Press Release
               </a>
             ) : null}
-            {pressLink ? (
+            {pressLinks.map((link) => (
               <a
-                href={pressLink}
+                key={`${link.label}-${link.url}`}
+                href={link.url}
                 className={styles.showPressReleaseLink}
-                target="_blank"
-                rel="noreferrer"
+                target={
+                  link.url?.startsWith("http") || link.url?.endsWith(".pdf")
+                    ? "_blank"
+                    : undefined
+                }
+                rel={
+                  link.url?.startsWith("http") || link.url?.endsWith(".pdf")
+                    ? "noreferrer"
+                    : undefined
+                }
               >
-                Artforum
+                {link.label}
               </a>
-            ) : null}
-            {reviewLink ? (
-              <a
-                href={reviewLink}
-                className={styles.showPressReleaseLink}
-                target="_blank"
-                rel="noreferrer"
-              >
-                {reviewLabel}
-              </a>
-            ) : null}
+            ))}
           </div>
         </div>
 

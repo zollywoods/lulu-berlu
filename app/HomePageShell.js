@@ -30,6 +30,36 @@ export default function HomePageShell({
 
   const showHappy = isMobile ? isClicked : isHovered;
 
+  const upcomingShowBody = (
+    <>
+      <div className={styles.upcomingShowHeading}>
+        <p className={styles.upcomingShowTitle}>
+          <strong>{artist}</strong>
+        </p>
+        <div className={styles.upcomingShowMetaRow}>
+          <div className={styles.upcomingShowMetaLeft}>
+            {showTitle ? (
+              <p className={styles.upcomingShowName}>{showTitle}</p>
+            ) : null}
+            {details ? (
+              <p className={styles.upcomingShowTitle}>
+                <strong>{details}</strong>
+              </p>
+            ) : null}
+          </div>
+          <p className={styles.upcomingShowDate}>{dates}</p>
+        </div>
+      </div>
+      {imageUrl ? (
+        <img
+          src={imageUrl}
+          alt={imageAlt ?? artist}
+          className={styles.camilleImage}
+        />
+      ) : null}
+    </>
+  );
+
   const pastShowsContent = (sectionClassName) =>
     pastShows.length > 0 ? (
       <div className={sectionClassName}>
@@ -99,41 +129,21 @@ export default function HomePageShell({
           <div className={styles.upcomingShow}>
             <div className={styles.upcomingShowInner}>
               <div className={styles.upcomingShowContent}>
-                <u className={styles.pastShowsLabel}>Current</u>
-                <a
-                  href={exhibitionLink}
-                  className={styles.upcomingShowLink}
-                  target={exhibitionLink?.endsWith(".pdf") ? "_blank" : undefined}
-                  rel={
-                    exhibitionLink?.endsWith(".pdf") ? "noreferrer" : undefined
-                  }
-                >
-                  <div className={styles.upcomingShowHeading}>
-                    <p className={styles.upcomingShowTitle}>
-                      <strong>{artist}</strong>
-                    </p>
-                    <div className={styles.upcomingShowMetaRow}>
-                      <div className={styles.upcomingShowMetaLeft}>
-                        {showTitle ? (
-                          <p className={styles.upcomingShowName}>{showTitle}</p>
-                        ) : null}
-                        {details ? (
-                          <p className={styles.upcomingShowTitle}>
-                            <strong>{details}</strong>
-                          </p>
-                        ) : null}
-                      </div>
-                      <p className={styles.upcomingShowDate}>{dates}</p>
-                    </div>
-                  </div>
-                  {imageUrl ? (
-                    <img
-                      src={imageUrl}
-                      alt={imageAlt ?? artist}
-                      className={styles.camilleImage}
-                    />
-                  ) : null}
-                </a>
+                <u className={styles.pastShowsLabel}>Upcoming</u>
+                {exhibitionLink && exhibitionLink !== "#" ? (
+                  <a
+                    href={exhibitionLink}
+                    className={styles.upcomingShowLink}
+                    target={exhibitionLink.endsWith(".pdf") ? "_blank" : undefined}
+                    rel={
+                      exhibitionLink.endsWith(".pdf") ? "noreferrer" : undefined
+                    }
+                  >
+                    {upcomingShowBody}
+                  </a>
+                ) : (
+                  <div className={styles.upcomingShowLink}>{upcomingShowBody}</div>
+                )}
                 {links.length > 0 ? (
                   <div className={styles.homeLinks}>
                     {links.map((item) => (

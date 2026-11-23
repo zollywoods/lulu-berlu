@@ -58,22 +58,44 @@ export default async function ShowPage({ params }) {
     notFound();
   }
 
-  const images = show.images || [];
-  const imageUrls = images
-    .filter(Boolean)
-    .map((img) => urlFor(img).width(1800).auto("format").url());
+  const images = (show.images || []).filter(
+    (img) => img && (img.asset || img.imagePath),
+  );
+  const imageUrls = images.map((img) =>
+    img.imagePath
+      ? img.imagePath
+          .split("/")
+          .map((part) => encodeURIComponent(part))
+          .join("/")
+      : urlFor(img).width(1800).auto("format").url(),
+  );
   const imageAlts = images.map((img) => img?.alt || "");
+  const sanityCaptions = images.map((img) => img?.caption || "");
+  const imageCaptions = sanityCaptions.some(Boolean)
+    ? sanityCaptions
+    : slug === "camille"
+      ? camilleCaptions
+      : sanityCaptions;
+  const pressLinks = show.pressLinks?.filter((link) => link?.label && link?.url)
+    ?.length
+    ? show.pressLinks
+    : [
+        show.pressLink ? { label: "Artforum", url: show.pressLink } : null,
+        slug === "camille"
+          ? { label: "Manhattan Art Review", url: "/mar.pdf" }
+          : null,
+      ].filter(Boolean);
 
   return (
     <ShowPageShell
       artist={show.artist}
       showTitle={show.showTitle}
       pressReleaseUrl={show.pressReleaseUrl}
-      pressLink={show.pressLink}
+      pressLinks={pressLinks}
       date={show.date}
       imageUrls={imageUrls}
       imageAlts={imageAlts}
-      imageCaptions={slug === "camille" ? camilleCaptions : []}
+      imageCaptions={imageCaptions}
     />
   );
 }

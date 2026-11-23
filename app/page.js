@@ -7,15 +7,23 @@ import HomePageShell from "./HomePageShell";
 export const revalidate = 10;
 
 const defaults = {
-  artist: "Molly Zuckerman-Hartung",
+  artist: "Mona Varichon",
   details: null,
-  showTitle: "Parallel",
-  dates: "September 19 - November 22, 2026",
-  imageUrl: "/mollys.jpeg",
-  imageAlt: "Molly Zuckerman-Hartung",
-  exhibitionLink: "/shows/molly",
+  showTitle: "Remakes",
+  dates: "January 17 – March 14, 2027",
+  imageUrl: "/VC_Monaflyer.jpg",
+  imageAlt: "Mona Varichon",
+  exhibitionLink: "",
   links: [],
   pastShows: [
+    {
+      artist: "Molly Zuckerman-Hartung",
+      showTitle: "Parallel",
+      dates: "September 19 - November 22, 2026",
+      link: "/shows/molly",
+      imageUrl: "/mollys.jpeg",
+      imageAlt: "Molly Zuckerman-Hartung",
+    },
     {
       artist: "Park Plays",
       showTitle: "co-presented with Fabrizio…",

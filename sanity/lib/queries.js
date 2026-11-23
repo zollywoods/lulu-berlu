@@ -2,8 +2,14 @@ export const showBySlugQuery = `*[_type == "show" && slug.current == $slug][0]{
   "artist": coalesce(artist, title),
   showTitle,
   "slug": slug.current,
-  images,
-  "pressReleaseUrl": pressRelease.asset->url,
+  images[]{
+    ...,
+    caption,
+    alt,
+    imagePath
+  },
+  "pressReleaseUrl": coalesce(pressRelease.asset->url, pressReleasePath),
+  pressLinks[]{label, url},
   pressLink,
   date
 }`
